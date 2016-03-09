@@ -24,7 +24,7 @@ def initGrid(cols, rows, array):
 # Print up each generation
 def printGen(cols, rows, array, genNo):
     os.system("clear")
-
+    print("\n" + time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()))
     print("Game of Life -- Generation " + str(genNo + 1))
     
     for i in range(rows):
@@ -32,7 +32,7 @@ def printGen(cols, rows, array, genNo):
             if array[i][j] == -1:
                 print("#", end=" ")
             elif array[i][j] == 1:
-                print("@", end=" ")
+                print("G", end=" ")
             else:
                 print(" ", end=" ")
         print("\n")
@@ -66,8 +66,8 @@ ROWS = 5
 #COLS = 39
 COLS = 20
 #GENERATIONS = 100
-GENERATIONS = 50
-DELAY = 0.8
+GENERATIONS = 30
+DELAY = 1.5
 
 thisGen = []
 nextGen = []
@@ -76,8 +76,8 @@ initGrid(COLS, ROWS, thisGen)
 initGrid(COLS, ROWS, nextGen)
 
 for gens in range(GENERATIONS):
+    time.sleep(DELAY)
     printGen(COLS, ROWS, thisGen, gens)
     processNextGen(COLS, ROWS, thisGen, nextGen)
-    time.sleep(DELAY)
     thisGen, nextGen = nextGen, thisGen
-input("Finished. Press <return> to quit.")
+#input("Finished. Press <return> to quit.")
