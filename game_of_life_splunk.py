@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 
+# Import Libraries
 import random
 import time
 import os
 
-#---------------------------------------------------------------------------
 
+# Set up the grid
 def initGrid(cols, rows, array):
     for i in range(rows):
         arrayRow = []
@@ -20,8 +21,7 @@ def initGrid(cols, rows, array):
                     arrayRow += [0]
         array += [arrayRow]
 
-#---------------------------------------------------------------------------
-    
+# Print up each generation
 def printGen(cols, rows, array, genNo):
     os.system("clear")
 
@@ -37,15 +37,13 @@ def printGen(cols, rows, array, genNo):
                 print(" ", end=" ")
         print("\n")
 
-#---------------------------------------------------------------------------
-
+# Process the next generation of cells
 def processNextGen(cols, rows, cur, nxt):
     for i in range(1,rows-1):
         for j in range(1,cols-1):
             nxt[i][j] = processNeighbours(i, j, cur)
 
-#---------------------------------------------------------------------------
-      
+# Process the neighbours if they live or die
 def processNeighbours(x, y, array):
     nCount = 0
     for j in range(y-1,y+2):
@@ -62,9 +60,6 @@ def processNeighbours(x, y, array):
     else:
         return array[x][y]
 
-#---------------------------------------------------------------------------
-############################################################################
-#---------------------------------------------------------------------------
 
 #ROWS = 11
 ROWS = 5
